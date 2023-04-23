@@ -1,0 +1,23 @@
+---
+#### Uninstall nginx
+- hosts: all
+  become: true
+  tasks:
+  - name: Install Updates
+    ansible.builtin.apt:
+      update_cache: yes
+
+  - name: UnInstall nginx
+    ansible.builtin.apt:
+      name: nginx
+      state: absent
+      autoclean: true
+      autoremove: true
+
+### Install mariadb #############
+  - name: Install latest version of mariadb
+    ansible.builtin.apt:
+      name: mariadb-server
+      state: latest
+      
+  
