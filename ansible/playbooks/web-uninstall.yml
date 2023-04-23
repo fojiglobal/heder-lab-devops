@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Uninstall nginx
+    ansible.builtin.apt:
+      name: nginx
+      state: absent
+      autoclean: yes
+      autoremove: yes
+  
