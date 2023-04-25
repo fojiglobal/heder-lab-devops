@@ -3,15 +3,12 @@
   become: true
   tasks: 
 
-  - name: Install Updates
+  - name: Update all packages to their latest version
     ansible.builtin.apt:
-      update_cache: yes
-
-  - name: Install upgrades
-    ansible.builtin.command: sudo apt upgrade -y
-
+      name: "*"
+      state: latest
   - name: Reboot the servers
     ansible.builtin.reboot:
-      
+        
 
       

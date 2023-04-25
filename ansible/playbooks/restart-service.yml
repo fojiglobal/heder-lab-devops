@@ -10,14 +10,14 @@
   - name: check if file exists
     ansible.builtin.stat:
       path: "{{file_path}}"
-    register: file_data
+    register: file_check
   
 
   - name: Restart httpd service 
     ansible.builtin.service:
       name: nginx
       state: restarted
-    when: file_data.stat.exists
+    when: file_check.stat.exists
       
 
   
