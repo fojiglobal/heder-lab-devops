@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  become: true
+  tasks: 
+
+  - name: Restart network service for interface eth0
+    ansible.builtin.service:
+      name: nginx
+      state: restarted
+      args: index.html
