@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: true
+  tasks: 
+
+  - name: Install Updates
+    ansible.builtin.apt:
+      update_cache: yes
+
+  - name: Install upgrades
+    ansible.builtin.command: sudo apt upgrade -y
+
+  - name: Reboot the servers
+    ansible.builtin.reboot:
+      
+
+      
