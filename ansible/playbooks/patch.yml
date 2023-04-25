@@ -1,14 +1,22 @@
 ---
-- hosts: all
-  become: true
-  tasks: 
 
+############ Install updates,upgrade packages and reboot servers ##############
+- hosts: all
+  become: true 
+  tasks:
+  - name: Install Updates
+    ansible.builtin.apt:
+      update_cache: yes
+  
   - name: Update all packages to their latest version
     ansible.builtin.apt:
       name: "*"
       state: latest
-  - name: Reboot the servers
+    register: latest_update
+
+  - name: Reboot the servers after latest updates are completed
     ansible.builtin.reboot:
+    when: latest_update.changed
         
 
       
